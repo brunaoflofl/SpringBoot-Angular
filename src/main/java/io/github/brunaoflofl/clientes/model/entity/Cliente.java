@@ -9,7 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.istack.NotNull;
 
 import lombok.Data;
 import lombok.Setter;
@@ -24,12 +28,15 @@ public class Cliente {
 	private Integer id;
 	
 	@Column(length = 150)
+	@NotEmpty
 	private String nome;
 	
 	@Column(length = 11)
+	@NotNull
+	@CPF
 	private String cpf;
 	
-	@Column(name="data_cadastro")
+	@Column(name="data_cadastro", updatable = false)
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCadastro;
 	
@@ -44,6 +51,30 @@ public class Cliente {
 	@PrePersist
 	public void prePersist() {
 		setDataCadastro(LocalDate.now());
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Object getId() {
+		return null;
+	}
+
+	public void setId(Object id2) {
+				
 	}
 
 }
