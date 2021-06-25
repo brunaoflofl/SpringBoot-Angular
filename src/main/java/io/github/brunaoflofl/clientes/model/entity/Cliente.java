@@ -24,9 +24,9 @@ import lombok.Setter;
 public class Cliente {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
+	@GeneratedValue
+	private Long id;
+
 	@Column(length = 150)
 	@NotEmpty(message = "O campo nome é obrigatório!")
 	private String nome;
@@ -41,6 +41,15 @@ public class Cliente {
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCadastro;
 	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
 	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
@@ -68,14 +77,6 @@ public class Cliente {
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
-	}
-
-	public Object getId() {
-		return null;
-	}
-
-	public void setId(Object id2) {
-				
 	}
 
 }

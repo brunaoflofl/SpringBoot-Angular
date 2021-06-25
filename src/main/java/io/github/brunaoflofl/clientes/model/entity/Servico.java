@@ -17,8 +17,8 @@ import lombok.Data;
 public class Servico {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@GeneratedValue
+	private Long id;
 	
 	@Column(nullable = false, length = 150)
 	private String descricao;
@@ -27,11 +27,11 @@ public class Servico {
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
