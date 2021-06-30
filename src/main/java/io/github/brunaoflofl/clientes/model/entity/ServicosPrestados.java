@@ -1,11 +1,11 @@
 package io.github.brunaoflofl.clientes.model.entity;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,7 +14,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Servico {
+public class ServicosPrestados {
 	
 	@Id
 	@GeneratedValue
@@ -27,6 +27,17 @@ public class Servico {
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 	
+	@Column
+	private LocalDate data;
+	
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
 	public Long getId() {
 		return id;
 	}
