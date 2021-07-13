@@ -11,8 +11,7 @@ public class BigDecimalConverter {
 		if(value == null) {
 			return null;
 		}
-	
-		 value = value.replace(target: ".", replacement: "").replace(target: ",", replacement: ".");
+		value = value.replace(".", "").replace(",", ".");
 			return new BigDecimal(value);
 	}
 
